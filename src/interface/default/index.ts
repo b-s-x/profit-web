@@ -8,3 +8,7 @@ export interface SetupContext {
   emit: (event: string, ...args: unknown[]) => void
   expose: (exposed?: Record<string, any>) => void
 }
+
+// export interface CustomRef {
+//   value: number
+// }
