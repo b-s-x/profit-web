@@ -23,18 +23,18 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { Data, SetupContext } from '@/interface/default/index.ts'
 // import ChartBar from '@/components/d3/ChartBar.vue';
+
+export interface Data {
+  [key: string]: unknown
+}
 
 export interface SetupContext {
   attrs: Data
-  slots: Slots
+  slots: any
   emit: (event: string, ...args: unknown[]) => void
   expose: (exposed?: Record<string, any>) => void
 }
-
-console.log(Data);
-
 
 export default defineComponent({
   name: 'Main',
@@ -45,11 +45,11 @@ export default defineComponent({
     // ChartBar,
   },
 
-  setup (props: Data, context: SetupContext): Data {
-    const part1: Ref<number> = ref<number>(2);
-    const part2: Ref<number> = ref<number>(8);
-    const percent1: Ref<number> = ref<number>(0);
-    const percent2: Ref<number> = ref<number>(0);
+  setup () {
+    const part1 = ref(2);
+    const part2 = ref(8);
+    const percent1 = ref(0);
+    const percent2 = ref(0);
 
     const total = (): number => part1.value + part2.value;
     const percent = (total: number, part: number): number => (part / total) * 100;
